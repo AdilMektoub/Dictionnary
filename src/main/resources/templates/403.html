@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>403</title>
+<link href="../static/css/bootstrap.min.css"
+rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+		<br />
+	<header>
+	<nav class="navbar navbar-expand-sm bg-light">	
+  		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" th:href="@{index}">
+			Informations and Search<a/></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{addInformation}">
+			Add an information<a/></li>
+			<li class="nav-item">
+			<a class="nav-link" th:inline="text">
+			[[${#httpServletRequest.remoteUser}]]
+			<a/>
+			</li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/login?logout}">
+			Logout<a/></li>
+  		</ul>
+	</nav>
+	</header>
+	
+	<br />
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Erreur de droits 403 !</h2></div>
+			<br/>
+			<div class="panel-body">
+				<h3>Vous n'etes pas autorisé à acceder à cette ressource</h3>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>

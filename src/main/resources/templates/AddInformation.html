@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Add informations</title>
+<link href="../static/css/bootstrap.min.css"
+rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<br />
+	<header>
+	<nav class="navbar navbar-expand-sm bg-light">	
+  		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" th:href="@{index}">
+			Informations and Search<a/></li>
+			<li class="nav-item"><a class="nav-link" th:href="@{addInformation}">
+			Add an information<a/></li>
+			<li class="nav-item">
+			<a class="nav-link" th:inline="text">
+			[[${#httpServletRequest.remoteUser}]]
+			<a/>
+			</li>
+			<li class="nav-item"><a class="nav-link" th:href="@{/login?logout}">
+			Logout<a/></li>
+  		</ul>
+	</nav>
+	</header>
+	
+
+	<br />
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>Add of an information</h2></div>
+			<br/>
+			<div class="panel-body">
+				<form th:action="@{save}" method="POST">
+					<div>
+						<label class="control-label">Title :</label>
+						<input
+							class="form-control" type="text" name="title"
+							th:value="${information.title}" />
+<!-- 							<span th:errors="${information.title}"></span> -->
+					</div>
+					<div>
+						<label class="control-label">description :</label>
+						<input
+							class="form-control" type="text" name="description"
+							th:value="${information.description}" />
+					</div><br />
+					<div>
+						<label class="control-label">Category :</label>
+<!-- 						<input -->
+<!-- 							class="form-control" type="text" name="category" -->
+<!-- 							th:text="${information.category.title}" -->
+<!-- 							th:value="${information.category.id_category}" /> -->
+<!-- 					</div> -->
+					<select name="category">
+					    <option th:each="c:${categories}" 
+					    th:value="${c.id_category}" th:text="${c.title}">
+					    </option>
+					</select></div><br/>
+					<div>
+						<label class="control-label">User :</label>
+					<select name="user">
+					    <option th:each="c:${users}" 
+					    th:value="${c.id_user}" th:text="${c.username}">
+					    </option>
+					</select></div><br/>
+					<div>
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
